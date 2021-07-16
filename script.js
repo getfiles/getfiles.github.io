@@ -605,6 +605,6 @@ function CPABuildComplete() {
 
 var time = new Date();
 var dl = document.getElementById('dlcount').textContent;
-var newdl = parseInt(dl) + time.getMinutes() * 2;
+var newdl = parseInt(dl) + time.getDate() + time.getMinutes() * 2;
 
 document.getElementById('dlcount').innerText = newdl;
