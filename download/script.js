@@ -12,7 +12,7 @@ function getFileInfo() {
 
     if (file !== null && size !== null) {
         document.querySelector('.hk_huge_text p').innerText = file;
-        document.querySelector('.hk_directory_text').innerText = 'File Size: ' + size + ' | Downloads: <span id="dlcount">3613</span>';
+        document.querySelector('.hk_directory_text').innerHTML = 'File Size: ' + size + ' | Downloads: <span id="dlcount">3613</span>';
     }
 }
 
