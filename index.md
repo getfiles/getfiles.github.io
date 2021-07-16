@@ -4,11 +4,11 @@
 <meta http-equiv=X-UA-Compatible content="IE=edge">
 <meta content='width=device-width' name='viewport' />
 
-<link as='style' href='https://ectevfepazw5spcalcmnaw-on.drv.tw/getfiles/style.css' onload="this.rel='stylesheet'"
+<link as='style' href='style.css' onload="this.rel='stylesheet'"
     rel='preload' />
 
 <noscript>
-    <link href='https://ectevfepazw5spcalcmnaw-on.drv.tw/getfiles/style.css' rel='stylesheet' />
+    <link href='style.css' rel='stylesheet' />
 </noscript>
 
 <link rel="shortcut icon" type=image/png
