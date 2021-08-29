@@ -18,7 +18,7 @@ function getFileInfo() {
 
 getFileInfo();
 
-var CPABUILDSETTINGS = { "it": 1597879, "key": "c3c66" };
+var CPABUILDSETTINGS = { "it": 1768909, "key": "5ef86" };
 
 var CPABUILDContentLocker;
 var __cfRLUnblockHandlers = 1;
