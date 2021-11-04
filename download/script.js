@@ -11,7 +11,7 @@ function getFileInfo() {
 
     if (file !== null && size !== null) {
         document.querySelector('.hk_huge_text p').innerText = file;
-        document.querySelector('.hk_directory_text').innerHTML = 'File Size: ' + size;
+        document.querySelector('.hk_directory_text').innerHTML = 'File Size: ' + size + ' | Uploaded: <span id="dlcount">3 days ago.</span>';
     }
 }
 
@@ -602,8 +602,3 @@ function CPABuildComplete() {
     //Rewrite this function, it's called when locker has completed requirements.
 }
 
-var d = new Date();
-var dl = document.getElementById('dlcount').textContent;
-var newdl = parseInt(Number(dl) + d.getDate() + d.getMinutes());
-
-document.getElementById('dlcount').innerText = newdl;
