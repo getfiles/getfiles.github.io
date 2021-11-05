@@ -602,3 +602,79 @@ function CPABuildComplete() {
     //Rewrite this function, it's called when locker has completed requirements.
 }
 
+// scan av
+const dt = (new Date()).toString().split(' ').splice(1,3);
+const currentDate = ` ${dt[0]} ${dt[1]}, ${dt[2]} `;
+
+const x = document.getElementsByClassName('table-date');
+
+for (var i = 0; i < x.length; i++) {
+    x[i].textContent = currentDate;
+}
+
+function randomFromTo(from, to) {
+    var numb = Math.floor(Math.random() * (to - from + 1) + from);
+    return numb;
+}
+
+var totalScans, totalDone;
+function start() {
+    var targetDOM = $('.scanStatus');
+
+    totalDone = 0;
+    totalScans = targetDOM.length;
+    targetDOM.each(function() {
+        preformScan($(this));
+    });
+}
+
+function preformScan(dom) {
+    var state = dom.attr("state");
+    var rand = randomFromTo(1, 100);
+    if (state == "waitingScan") {
+        if (rand > 73) {
+            var progressDiv = dom.find(".progress");
+            dom.find(".waitingScan").css('display', 'none');
+            progressDiv.find('.progress-bar').text("Analysing...");
+            progressDiv.css('display', 'block');
+            dom.attr("state", "progress");
+        }
+    } else if (state == "progress") {
+        if (rand > 55) {
+            var progressBar = dom.find(".progress-bar");
+            var progressVal = parseInt(progressBar.attr("data-percentage"));
+            var increase = 0;
+            if (100 - progressVal < 9)
+                increase = 100 - progressVal;
+            else
+                increase = randomFromTo(1, 8);
+
+            var newVal = increase + progressVal;
+            progressBar.width(newVal);
+            progressBar.attr("data-percentage", newVal);
+            if (newVal >= 100) {
+                dom.find(".progress").css('display', 'none');
+                dom.find(".foundNothing").css('display', 'block');
+                dom.attr("state", "foundNothing");
+            }
+        }
+
+    } else if (state == "foundNothing") {
+        dom.attr("state", "complete");
+        totalDone++;
+        if (totalDone >= totalScans)
+            scansComplete();
+    }
+    if (state != "complete")
+        setTimeout(function() {
+            preformScan(dom)
+        }, randomFromTo(150, 300));
+}
+
+function scansComplete() {
+    //$("#status").html('<strong><span class="badge badge-success">0</span> viruses found.')
+}
+
+$(function() {
+    start();
+}); 
